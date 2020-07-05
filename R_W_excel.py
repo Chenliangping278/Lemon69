@@ -14,9 +14,12 @@ def read_data(file_name,sheet_name):
         for j in range(1,sheet.max_column-1):
             case.append(sheet.cell(row=i,column=j).value)
         all_case.append(case)
+    print(sheet.max_row)
     return all_case#返回所有测试用例数据
+
     #print(all_case)
 read_data('test_case.xlsx', 'recharge')
+
 
 
 

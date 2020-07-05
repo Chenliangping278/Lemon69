@@ -14,12 +14,13 @@ def run(file_name,sheet_name,c1,c2):
     print('获取的测试数据是：',all_case)
     for test_data in all_case:
 
-        #if test_data[0]==1
-        #if test_data[1]=='登录'，判断两边是否相等，比较运算符
-        ip='http://120.78.128.25:8766'
+
+        ip="http://120.78.128.25:8766"
         #response=http_request(ip + test_data[4],eval(test_data[5]),token=Token,method=test_data[3])
-        response = http_request(ip + test_data[4], eval(test_data[5]), token=Token, method=test_data[3])
-        if 'login' in test_data[4]:
+        response = http_request(ip +test_data[4], eval(test_data[5]), token=Token, method=test_data[3])
+        #if 'login' in test_data[4]:
+        if test_data[0]==1:
+        # if test_data[1]=='登录'，判断两边是否相等，比较运算符
 
             Token="Bearer "+response['data']['token_info']['token']
         expected=eval(test_data[6])#期望值在第6列
@@ -38,6 +39,6 @@ def run(file_name,sheet_name,c1,c2):
             print('测试用例执行不通过')
             write_data(file_name,sheet_name,test_data[0]+1,c2,'FAIL')
         #保存
-#run('test_case.xlsx','recharge',8,9)
+run('test_case.xlsx','recharge',8,9)
 
 run('test_case.xlsx','withdraw',8,9)
